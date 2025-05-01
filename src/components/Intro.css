@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400&display=swap');
+
+.intro-elevated-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: #fff;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Playfair Display', serif;
+  overflow: hidden;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.intro-elevated-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, #f5f5f5, #eaeaea);
+  animation: pulseBG 6s infinite ease-in-out;
+  z-index: -1;
+}
+
+@keyframes pulseBG {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.95; }
+}
+
+.intro-elevated-name {
+  font-size: 4.8rem;
+  letter-spacing: 2.0rem; /* reduced from 2.6rem */
+  text-transform: uppercase;
+  font-family: Cochin, 'Times New Roman', serif;
+  max-width: 100%;
+  line-height: 1.2;
+}
+
+
+.intro-elevated-subtitle {
+  font-family: Cochin, 'Times New Roman', serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.5rem;
+  margin-top: 1rem;
+  color: #555;
+}
+
+.intro-elevated-buttons {
+  margin-top: 3rem;
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.intro-elevated-button {
+  padding: 0.8rem 1.8rem;
+  font-family: Cochin, 'Times New Roman', serif;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #111;
+  border: 1.5px solid #111;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.intro-elevated-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #111;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.intro-elevated-button:hover::after {
+  transform: scaleX(1);
+}
+
+.intro-elevated-button:hover {
+  color: #fff;
+}
+
+
+
+
+/*
+.custom-cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 36, 0, 0.2);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+  z-index: 9999;
+  backdrop-filter: blur(2px);
+}*/
+
+/* Mobile First Adjustments */
+@media (max-width: 768px) {
+  .intro-elevated-container {
+    padding: 2rem 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .intro-elevated-name {
+    font-size: 2.8rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .intro-elevated-subtitle {
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    margin-top: 0.8rem;
+  }
+
+  .intro-elevated-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .intro-elevated-button {
+    width: 100%;
+    max-width: 260px;
+    font-size: 1rem;
+    padding: 0.9rem 1.4rem;
+  }
+}
