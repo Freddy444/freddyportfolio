@@ -47,8 +47,8 @@ const ProjectCard = ({ project, isActive }) => {
           ))}
         </div>
       </div>
-      <p><strong>Type:</strong> {project.type}</p>
-      <p><strong>Tools:</strong> {project.tools}</p>
+      <p className="project-type"><strong>Type:</strong> {project.type}</p>
+      <p className="project-tools"><strong>Tools:</strong> {project.tools}</p>
     </motion.div>
   );
 };
