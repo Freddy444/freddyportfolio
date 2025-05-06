@@ -1,44 +1,46 @@
-.work-section {
-  padding: 10px 20px;
-  max-width: 100%;
-  margin: 0 auto;
+/* Base Reset & Global Fix */
+html, body {
+  margin: 0;
+  padding: 0;
   font-family: 'Inter', sans-serif;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  background-color: #fff !important;
 }
 
+/* Layout: Section */
+.work-section {
+  padding: 2rem 1.7vw;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header Title */
 .work-section h2 {
   font-size: 1.6rem;
-  margin-bottom: 70px;
+  margin-bottom: 3rem;
+  font-family: 'Cochin', Georgia, serif;
   color: #000;
-  font-family: Cochin, Georgia, Times, 'Times New Roman', serif;
   text-align: center;
   letter-spacing: 5px;
 }
 
+/* Container Layout */
 .work-container {
   display: grid;
-  grid-template-columns: 1fr auto 1.8fr;
-  gap: 20px;
-  align-items: flex-start;
-  height: 100%;
   grid-template-columns: 1fr auto minmax(0, 2.5fr);
+  gap: 2rem;
   align-items: stretch;
-
 }
 
+/* Scrollable Project List */
 .projects-scroll-container {
-  height: 820px;
   width: 400px;
-  overflow-y: scroll;
+  height: 770px;
+  overflow-y: auto;
   scroll-snap-type: y mandatory;
+  background: #fff;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  background: #fff;
-  position: relative;
-  overflow-y: auto;
 }
 
 .projects-scroll-container::-webkit-scrollbar {
@@ -48,79 +50,44 @@
 .projects-list {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  padding: 20px 0;
+  gap: 2.5rem;
+  padding: 1.25rem 0;
   align-items: flex-start;
 }
 
+/* Project Details */
 .project-details-pane {
-  width: 100%;
-  height: 100%;
   background: #fff;
-  padding: 40px;
-  border-radius: 16px;
+  padding: 2rem;
+  max-height: 770px;
+  border-radius: 1rem;
   border-left: 6px solid #eee;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
   overflow-y: auto;
   flex-grow: 1;
-  max-height: 85vh;
-  transition: all 0.3s ease;
-  max-height: none;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .project-details-pane h3 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   color: #222;
-  font-family: Cochin,'Times New Roman', serif;
-  
+  font-family: 'Cochin', 'Times New Roman', serif;
 }
 
-.label {
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: #333;
-}
-
-.year-group {
-  position: relative;
-  width: 1px; /* width of the line */
-  background-color: #ccc;
-  border-radius: 2px;
-  height: 100%;
-  margin: 0 30px;
-}
-
-.year-label {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 18px;
-  background: #f5f5f5;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: 500;
-  color: #555;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-}
-
+/* Grid Description */
 .description-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: start;
-  margin-top: 20px;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
 }
 
 .description-grid .left,
 .description-grid .right {
-  padding: 20px;
+  padding: 1.25rem;
   background-color: #fafafa;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
@@ -129,10 +96,39 @@
   color: #5c8aff;
 }
 
-/*arrows*/
+.label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+/* Year Scroll Line */
+.year-group {
+  position: relative;
+  width: 1px;
+  background-color: #ccc;
+  border-radius: 2px;
+  height: 100%;
+  margin: 0 1.5rem;
+}
+
+.year-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  background: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: #555;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Arrows */
 .scroll-wrapper {
   position: relative;
-  flex: 1; /* Take available space */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,122 +138,125 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 24px;
+  font-size: 1.5rem;
   color: #333;
-  z-index: 10;
   opacity: 0.8;
   pointer-events: none;
+  z-index: 10;
 }
 
-.scroll-arrow.up {
-  top: 0;
-}
+.scroll-arrow.up { top: 0; }
+.scroll-arrow.down { bottom: 0; }
 
-.scroll-arrow.down {
-  bottom: 0;
-}
-/*        */
-
-/* Global fix */
-html, body {
-  margin: 0;
-  padding: 0;
-  background-color: #fff !important;
-  overflow: hidden; 
-}
-
-
-/* Default: Back button visible, hamburger hidden */
-.desktop-only {
-  display: block;
-}
-.mobile-only {
-  display: none;
-}
-
+/* Nav & Branding */
 .landing-name-clickable {
-  font-size: 1.6rem;
-  margin-bottom: 30px;
+  font-size: 1.77rem;
+  margin-top: 15px;
+  font-family: 'Cochin', Georgia, serif;
   color: #000;
-  font-family: Cochin, Georgia, Times, 'Times New Roman', serif;
   text-align: center;
   letter-spacing: 5px;
   cursor: pointer;
   user-select: none;
   transition: color 0.3s ease;
+  margin-bottom: .8rem;
 }
 
 .landing-name-clickable:hover {
-  color: #cc0000; /* Light red when hovering (optional) */
+  color: #cc0000;
 }
 
-
-.desktop-links {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.nav-button {
-  margin: 0 6px;
-  padding: 6px 14px;
-  font-size: 0.85rem;
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.8rem;
+  font-family: 'Cochin', Georgia, serif;
+  font-size: .9rem;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  background: transparent;
-  border: 1px solid #333;
+  letter-spacing: 1.2px;
+  margin-bottom: 2rem;
+}
+
+.nav-links span {
   color: #333;
   cursor: pointer;
-  transition: all 0.25s ease;
-  border-radius: 4px;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
 }
 
-.nav-button:hover {
-  background: #333;
-  color: #fff;
+.nav-links span:hover {
+  color: #cc0000;
 }
 
-.nav-button.active {
-  background: #333;
-  color: #fff;
-  border-color: #333;
+.nav-links .active::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #cc0000;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
+.landing-container {
+  height: 100vh;
+  overflow: hidden;
+}
 
-/* On mobile: Back button hidden, hamburger shown */
+.mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem 0 1.5rem;
+}
+
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
+/* Responsive */
 @media (max-width: 768px) {
-  .desktop-only {
-    display: none;
+  .desktop-only { display: none; }
+  .mobile-only { display: block; }
+  
+  .mobile-header .landing-name-clickable {
+    font-size: 1.3rem;
+    margin: 0;
+    letter-spacing: 4px;
+    text-align: right;
+    flex: 1;
   }
-  .mobile-only {
-    display: block;
+
+  .hamburger-wrapper {
+    margin-right: 1rem;
   }
-}
 
+  .hamburger-wrapper button {
+    font-size: 1.5rem;
+  }
 
-@media (max-width: 768px) {
+  .landing-container {
+    height: auto;
+    overflow: visible;
+  }
+
   .work-container {
     display: flex;
     flex-direction: column;
     gap: 0;
-    padding: 0;
-    margin: 0;
   }
 
   .projects-scroll-container {
     width: 100%;
     height: auto;
     overflow-x: scroll;
-    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     display: flex;
     flex-direction: row;
-    gap: 0;
-    padding: 0;
-    margin: 0;
   }
 
   .projects-list {
-    display: flex;
     flex-direction: row;
     width: max-content;
     gap: 0;
@@ -266,43 +265,28 @@ html, body {
   .projects-list > div {
     scroll-snap-align: start;
     width: 100vw;
-    flex-shrink: 0;
     padding: 20px;
     box-sizing: border-box;
   }
 
   .projects-list img {
     width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
     max-height: 240px;
+    border-radius: 10px;
+    object-fit: cover;
   }
 
   .project-details-pane {
     padding: 20px;
-    border-left: none;
     border-top: 2px solid #eee;
+    border-left: none;
     box-shadow: none;
     max-height: none;
     height: auto;
   }
 
-
-  .scroll-wrapper {
-    width: 100%;
-  }
-
-
+  .scroll-arrow,
   .year-group {
-    display: none !important;
-  }
-  
-}
-
-
-@media (max-width: 768px) {
-  .scroll-arrow {
     display: none !important;
   }
 }
