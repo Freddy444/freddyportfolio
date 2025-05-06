@@ -273,6 +273,16 @@ const Work = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const moveCursor = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', moveCursor);
+    return () => window.removeEventListener('mousemove', moveCursor);
+  }, []);
+
   const [canScrollUp, setCanScrollUp] = useState(false);
   const [canScrollDown, setCanScrollDown] = useState(true);
 
@@ -317,7 +327,6 @@ const Work = () => {
   }, []);
 
   const activeProject = projects.find(p => p.id === activeProjectId);
-
   const isActive = (path) => location.pathname === path;
 
   return (
@@ -325,42 +334,33 @@ const Work = () => {
       {/* Top navigation */}
       <div className="top-nav-buttons">
         <div className="desktop-only">
-        <h2 
-          className="landing-name-clickable" 
-          onClick={() => navigate('/')}
-        >
-          FREDDY FABIAN
-        </h2>
-          <div className="desktop-links">
-            <button
-              className={`nav-button ${isActive('/landing') ? 'active' : ''}`}
-              onClick={() => navigate('/landing')}
-            >
+          <h2 className="landing-name-clickable" onClick={() => navigate('/')}>
+            FREDDY FABIAN
+          </h2>
+          <div className="nav-links">
+            <span onClick={() => navigate('/landing')} className={isActive('/landing') ? 'active' : ''}>
               Work
-            </button>
-            <button
-              className={`nav-button ${isActive('/about') ? 'active' : ''}`}
-              onClick={() => navigate('/about')}
-            >
+            </span>
+            <span onClick={() => navigate('/about')} className={isActive('/about') ? 'active' : ''}>
               About
-            </button>
-            <button
-              className="nav-button"
-              onClick={() => window.open('https://www.linkedin.com/in/freddy-fabian-784395223/', '_blank')}
-            >
+            </span>
+            <span onClick={() => window.open('https://www.linkedin.com/in/freddy-fabian-784395223/', '_blank')}>
               Connect
-            </button>
+            </span>
           </div>
         </div>
-        <div className="mobile-only">
+        <div className="mobile-header mobile-only">
           <HamburgerMenu />
+          <h2 className="mobile-name" onClick={() => navigate('/')}>
+            FREDDY FABIAN
+          </h2>
+          <div style={{ width: 24 }} /> {/* Spacer for visual balance */}
         </div>
       </div>
 
       {/* Main Work section */}
       <section id="work" className="work-section">
         <div className="work-container">
-
           <div className="scroll-wrapper">
             <div className="desktop-only">
               {canScrollUp && <div className="scroll-arrow up">↑</div>}
@@ -374,8 +374,8 @@ const Work = () => {
                     data-id={project.id}
                     ref={(el) => (itemRefs.current[project.id] = el)}
                   >
-                    <ProjectCard 
-                      project={project} 
+                    <ProjectCard
+                      project={project}
                       isActive={activeProjectId === project.id}
                     />
                   </div>
@@ -401,7 +401,7 @@ const Work = () => {
                   width: '10px',
                   height: '10px',
                   borderRadius: '50%',
-                  backgroundColor: '#ff3636',
+                  backgroundColor: '#cc0000',
                 }}
               />
             ))}
@@ -423,9 +423,16 @@ const Work = () => {
               </>
             )}
           </div>
-
         </div>
       </section>
+
+      {/* Custom Cursor (desktop only) */}
+      {window.innerWidth > 768 && (
+        <div
+          className="custom-cursor"
+          style={{ left: cursorPos.x, top: cursorPos.y }}
+        />
+      )}
     </div>
   );
 };
