@@ -212,6 +212,16 @@ html, body {
   padding: 1.2rem 1.5rem 0 1.5rem;
 }
 
+.mobile-name {
+  text-align: center;
+  flex: 1;
+  font-size: 1.3rem;
+  font-family: 'Cochin', Georgia, serif;
+  letter-spacing: 4px;
+  color: #000;
+}
+
+
 .desktop-only { display: block; }
 .mobile-only { display: none; }
 
