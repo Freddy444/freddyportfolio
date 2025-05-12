@@ -2,33 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './ProjectCard.css';
 
-const ProjectCard = ({ project, isActive }) => {
+const ProjectCard = ({ project, isActive, index }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = project.images;
 
-  // Reset to the first image whenever the card becomes active
+  const isMobile = window.innerWidth < 768;
+  const shouldNudge = isMobile && index === 0;
+
   useEffect(() => {
-    if (isActive) {
-      setCurrentIndex(0);
-    }
+    if (isActive) setCurrentIndex(0);
   }, [isActive]);
 
-  // Auto-slide images every 1.5s
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 1500);
-
+    }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
     <motion.div
       className="project-card"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={shouldNudge ? { x: 0 } : { opacity: 0, y: 50 }}
+      animate={shouldNudge ? { x: [0, -92, 12, -6, 0] } : { opacity: 1, y: 0 }}
+      transition={shouldNudge 
+        ? { duration: 1.4, delay: 1, ease: 'easeInOut' } 
+        : { duration: 0.9 }
+      }
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
     >
       <h3>{project.title}</h3>
       <div className="slideshow-wrapper">
@@ -52,5 +53,6 @@ const ProjectCard = ({ project, isActive }) => {
     </motion.div>
   );
 };
+
 
 export default ProjectCard;
