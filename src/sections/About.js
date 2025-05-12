@@ -57,7 +57,6 @@ const About = () => {
           </div>
 
           <div className="about-right">
-            <h2 className="about-title">About Me</h2>
             <p className="about-text">
               I’m a multidisciplinary engineer building interactive experiences at the intersection of code and design. My work explores how visual art and technology can be tools for creative control and exploration.
             </p>
