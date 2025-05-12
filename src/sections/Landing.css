@@ -11,7 +11,7 @@ html, body {
   padding: 2rem 1.7vw;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /* Header Title */
@@ -85,10 +85,9 @@ html, body {
 
 .description-grid .left,
 .description-grid .right {
+  margin-top: -60px;
   padding: 1.25rem;
-  background-color: #fafafa;
   border-radius: 0.75rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .right li::marker {
@@ -202,8 +201,8 @@ html, body {
 
 .landing-container {
   height: 100vh;
-  overflow: hidden;
-}
+  overflow-x: hidden;
+  overflow-y: auto;}
 
 .mobile-header {
   display: flex;
@@ -229,7 +228,12 @@ html, body {
 @media (max-width: 768px) {
   .desktop-only { display: none; }
   .mobile-only { display: block; }
-  
+
+  .landing-container {
+    height: auto;
+    overflow-y: auto;
+  }
+
   .mobile-header .landing-name-clickable {
     font-size: 1.3rem;
     margin: 0;
@@ -299,4 +303,6 @@ html, body {
   .year-group {
     display: none !important;
   }
+
 }
+
