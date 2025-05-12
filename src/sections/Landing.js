@@ -32,10 +32,8 @@ const projects = [
     tools: "Java, AWS",
     images: [amazonImage,ec2Image],
     description: (
-      <div className="amazon-experience">
-        <div className="role-company">
-          <h4>Amazon Web Services (AWS) – EC2 Reserved Instances</h4>
-        </div>
+      <div className="project-experience">
+        <h4>Amazon Web Services (AWS) – EC2 Reserved Instances</h4>
         <div className="description-grid">
           <div className="left">
             <p className="label">Problem</p>
@@ -146,7 +144,7 @@ const projects = [
   },
   {
     id: "linked",
-    title: "LINK – Drawing Tool",
+    title: "LINK",
     year: 2023,
     type: "Creative Tool",
     tools: "Processing",
@@ -185,7 +183,7 @@ const projects = [
   },
   {
     id: "ourcampus",
-    title: "OurCampus – Student App",
+    title: "Lead Backend Developer",
     year: 2022,
     type: "App",
     tools: "Node.js, React Native, HTML, CSS",
@@ -368,7 +366,7 @@ const Work = () => {
 
             <div className="projects-scroll-container" ref={scrollContainerRef}>
               <div className="projects-list">
-                {projects.map((project) => (
+                {projects.map((project, idx) => (
                   <div
                     key={project.id}
                     data-id={project.id}
@@ -377,6 +375,7 @@ const Work = () => {
                     <ProjectCard
                       project={project}
                       isActive={activeProjectId === project.id}
+                      index={idx} // Pass the index here
                     />
                   </div>
                 ))}
